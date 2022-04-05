@@ -5,7 +5,7 @@ import { ProductsService } from 'src/services/products/products.service';
 @Controller('products')
 export class ProductsController {
 
-    constructor( private productsService: ProductsService)
+    constructor(private productsService: ProductsService)
 
     @Get('products/:id')
     getProduct(@Param() params: any): string {
@@ -35,12 +35,12 @@ export class ProductsController {
 
     @Put()
     update(@Param('id') id: number, @Body() payload: any) {
-        return this.productsService.update(id,payload);
+        return this.productsService.update(id, payload);
     }
 
     @Delete(':id')
-  delete(@Param('id') id: number) {
-    return id;
-  }
+    delete(@Param('id') id: number) {
+        return this.productsService.remove(+id)
+    }
 
 }
