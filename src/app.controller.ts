@@ -10,8 +10,5 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('products/:id')
-  getProduct(@Param() params:any): string {
-    return `Product con id: ${params.id}`
-  }
+  
 }
