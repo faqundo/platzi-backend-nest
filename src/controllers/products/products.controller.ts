@@ -1,11 +1,12 @@
 import { Controller, Get, Post, Param, HttpStatus, HttpCode, Res, Body, Put, Delete } from '@nestjs/common';
 import { Response } from 'express';
 import { ProductsService } from 'src/services/products/products.service';
+import { CreateProductDto ,UpdateProductDto } from "../../dtos/products.dtos";
 
 @Controller('products')
 export class ProductsController {
 
-    constructor(private productsService: ProductsService)
+    constructor(private productsService: ProductsService){}
 
     @Get('products/:id')
     getProduct(@Param() params: any): string {
@@ -25,7 +26,7 @@ export class ProductsController {
     }
 
     @Post() // 👈 New decorator
-    create(@Body() payload: any) {
+    create(@Body() payload: CreateProductDto) {
         /* return {
             message: 'accion de crear',
             payload,
@@ -34,7 +35,7 @@ export class ProductsController {
     }
 
     @Put()
-    update(@Param('id') id: number, @Body() payload: any) {
+    update(@Param('id') id: number, @Body() payload: UpdateProductDto) {
         return this.productsService.update(id, payload);
     }
 
